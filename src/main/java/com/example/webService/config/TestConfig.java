@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.webService.entities.Category;
 import com.example.webService.entities.Order;
+import com.example.webService.entities.Product;
 import com.example.webService.entities.User;
 import com.example.webService.entities.enums.OrderStatus;
 import com.example.webService.repositories.CategoryRepository;
 import com.example.webService.repositories.OrderRepository;
+import com.example.webService.repositories.ProductRepository;
 import com.example.webService.repositories.UserRepository;
 
 //Classe de configuração específica para perfil de teste
@@ -33,6 +35,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -48,10 +53,17 @@ public class TestConfig implements CommandLineRunner{
 		Category c2 = new Category(null, "Books");
 		Category c3 = new Category(null, "Computers");
 		
+		Product p1 = new Product(null, "The Lord of the Rings", "senhor dos anéis", 25.00, "");
+		Product p2 = new Product(null, "Smart TV", "Qualidade de televisão", 2500.00, "");
+		Product p3 = new Product(null, "MacBookPro", "Apple", 5000.00, "");
+		Product p4 = new Product(null, "PC Gamer", "I9 9400", 6000.00, "");
+		Product p5 = new Product(null, "Rails for Dumnies", "livro", 25.00, "");
+		
 		//salva no banco todos os objetos de teste
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 	}
 	
 	
